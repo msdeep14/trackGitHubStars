@@ -35,11 +35,11 @@ def openWebsite():
 		soup = BeautifulSoup(response.text, 'html.parser')
 		div = soup.find_all('li', {'class': 'col-12 d-block width-full py-4 border-bottom public source'})
 		# print div
-
+		# \/[a-zA-Z0-9\-\_\.]+\/[a-zA-Z0-9\.\-\_]+\/stargazers
 		for d in div:
 			temp = d.find_all('div',{'class':'f6 text-gray mt-2'})
 			for t in temp:
-				x = t.find_all('a', attrs={'href': re.compile("^\/[a-zA-Z0-9\-\_.]+\/[a-zA-Z0-9.\-\_]+\/stargazers")})
+				x = t.find_all('a', attrs={'href': re.compile("^\/[a-zA-Z0-9\-\_\.]+\/[a-zA-Z0-9\.\-\_]+\/stargazers")})
 				if len(x) is not 0:
 					name = x[0].get('href')
 					name = name[len(username)+2:-11]
